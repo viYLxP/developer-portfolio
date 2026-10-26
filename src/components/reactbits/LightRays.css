@@ -1,0 +1,19 @@
+/*
+ * From React Bits (https://reactbits.dev), MIT + Commons Clause, (c) David Haz.
+ * Kept close to the original so it can be updated from upstream.
+ */
+.light-rays {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.light-rays__canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Mahmoud Saeed · Software Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio of Mahmoud Saeed, a software engineer building web and mobile applications with React, React Native, Angular, Java and Spring Boot."
+    />
+    <meta name="theme-color" content="#0b3b36" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+    />
+    <script>
+      // Apply the saved language before the first paint to avoid a
+      // left-to-right flash for Arabic visitors. The React app owns these
+      // attributes after it loads (src/i18n/LanguageProvider.tsx).
+      ;(function () {
+        try {
+          var lang = localStorage.getItem('portfolio.language')
+          if (lang === 'ar' || lang === 'en') {
+            document.documentElement.lang = lang
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'
+          }
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
