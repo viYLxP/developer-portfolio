@@ -10,7 +10,7 @@ export const profile = {
   /** International format, digits only after '+'. Example: '+966500000000' */
   phone: '+966582878578' as string | null,
   linkedinUrl: 'https://www.linkedin.com/in/mahmoud-al-ahmadi-494526283' as string | null,
-  githubUrl: null as string | null,
+  githubUrl: 'https://github.com/viYLxP' as string | null,
   /**
    * Your CV as a PDF. Put the file in public/ (for example public/cv.pdf)
    * and set this to './cv.pdf'. null shows "CV coming soon".
@@ -30,7 +30,12 @@ export interface ProjectConfig {
 }
 
 export const projects: ProjectConfig[] = [
-  { id: 'portfolio', tech: ['React', 'TypeScript', 'Vite', 'CSS'], demoUrl: null, repoUrl: null },
+  {
+    id: 'portfolio',
+    tech: ['React', 'TypeScript', 'Vite', 'CSS'],
+    demoUrl: null,
+    repoUrl: 'https://github.com/viYLxP/developer-portfolio',
+  },
   { id: 'serviceCompany', tech: ['React', 'TypeScript', 'Vite'], demoUrl: null, repoUrl: null },
   { id: 'clientflow', tech: ['React', 'TypeScript', 'Vite', 'localStorage'], demoUrl: null, repoUrl: null },
   { id: 'stockmate', tech: ['React', 'TypeScript', 'Vite', 'localStorage'], demoUrl: null, repoUrl: null },

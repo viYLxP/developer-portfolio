@@ -131,6 +131,7 @@ test.describe('translations', () => {
       'name@company.com',
       'mtmtaswh77@gmail.com',
       'www.linkedin.com/in/mahmoud-al-ahmadi-494526283',
+      'github.com/viYLxP',
     ])
     const leftovers = (await visibleTextWithoutArabic(page)).filter((text) => !allowed.has(text))
     expect(leftovers).toEqual([])
