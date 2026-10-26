@@ -33,7 +33,7 @@ export const projects: ProjectConfig[] = [
   {
     id: 'portfolio',
     tech: ['React', 'TypeScript', 'Vite', 'CSS'],
-    demoUrl: null,
+    demoUrl: 'https://developer-portfolio-two-omega.vercel.app',
     repoUrl: 'https://github.com/viYLxP/developer-portfolio',
   },
   { id: 'serviceCompany', tech: ['React', 'TypeScript', 'Vite'], demoUrl: null, repoUrl: null },

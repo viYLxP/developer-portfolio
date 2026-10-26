@@ -1,12 +1,14 @@
 # Developer Portfolio (Arabic / English)
 
+**Live site:** https://developer-portfolio-two-omega.vercel.app
+
 A bilingual developer portfolio built with **React, TypeScript and Vite**. Every piece of interface text exists in Arabic and English, and a visible button switches between them instantly. Arabic renders right-to-left, English left-to-right, and the choice is remembered on the visitor's device.
 
 Sections: Hero, About, Skills, Featured Projects, Services, Experience, CV, Contact and Footer.
 
 Skills shown: Java, C#, Python, PHP, JavaScript, React, Angular, React Native, Spring Boot, MySQL and PostgreSQL.
 
-Personal details, experience and education come from Mahmoud Saeed's CV (`public/Mahmoud-Saeed-CV.pdf`). Still to add: the GitHub profile link and the live demo / repository links of each project (`src/config/profile.ts`). See [Personalize](#personalize).
+Personal details, experience and education come from Mahmoud Saeed's CV (`public/Mahmoud-Saeed-CV.pdf`). Still to add: the live demo / repository links of the other three projects (`src/config/profile.ts`). See [Personalize](#personalize).
 
 ## Features
 
@@ -126,7 +128,7 @@ The build is static (`dist/`). `vercel.json` tells Vercel to install with `npm c
 3. **Add New → Project**, pick the `developer-portfolio` repository, then **Deploy**.
 4. Every push to `main` deploys again automatically. Pull requests get their own preview URL.
 
-After the first deploy, put the live URL in `projects[0].demoUrl` in `src/config/profile.ts` and push again.
+The site is live at https://developer-portfolio-two-omega.vercel.app (set in `projects[0].demoUrl`). Every push to `main` redeploys it automatically.
 
 `.github/workflows/ci.yml` runs lint, type-check and build on every push and pull request, so a broken change shows a red ✗ on GitHub before you rely on the Vercel deploy.
 
