@@ -1,157 +1,90 @@
-# Developer Portfolio (Arabic / English)
+# Developer Portfolio · Arabic / English
 
-**Live site:** https://developer-portfolio-two-omega.vercel.app
+**Live:** https://developer-portfolio-two-omega.vercel.app
 
-A bilingual developer portfolio built with **React, TypeScript and Vite**. Every piece of interface text exists in Arabic and English, and a visible button switches between them instantly. Arabic renders right-to-left, English left-to-right, and the choice is remembered on the visitor's device.
+Personal portfolio of **Mahmoud Saeed**, Software Engineer. One site in two languages: Arabic (right-to-left) and English (left-to-right), switched instantly with one button and remembered on the visitor's device.
 
-Sections: Hero, About, Skills, Featured Projects, Services, Experience, CV, Contact and Footer.
+Built with **React 19, TypeScript and Vite**, animated with **GSAP, Lenis and React Bits**.
 
-Skills shown: Java, C#, Python, PHP, JavaScript, React, Angular, React Native, Spring Boot, MySQL and PostgreSQL.
+<div dir="rtl">
 
-Personal details, experience and education come from Mahmoud Saeed's CV (`public/Mahmoud-Saeed-CV.pdf`). Still to add: the live demo / repository links of the other three projects (`src/config/profile.ts`). See [Personalize](#personalize).
+موقع شخصي لعرض أعمال **محمود سعيد** (مهندس برمجيات)، بالعربي والإنجليزي. زر واحد يبدّل اللغة واتجاه الصفحة فورًا، والموقع يتذكر اختيار الزائر.
 
-## Features
+</div>
 
-- **Reusable i18n layer** (`src/i18n`): a language context, typed `en` / `ar` dictionaries and Intl helpers. Components read `t.section.key`; no component is duplicated per language.
-- **Type-safe translations:** `ar.ts` is typed against the English dictionary, so a missing Arabic key fails `npm run build`.
-- **Direction-aware layout:** `<html lang dir>` updates on every switch; styles use CSS logical properties (`margin-inline-start`, `inset-inline-end`, `text-align: start`, …). Forward arrows mirror in RTL; the select arrow, timeline, toasts and mobile menu follow the direction.
-- **Persistence:** the language is saved in `localStorage` (`portfolio.language`). On a first visit it follows the browser language (Arabic browsers get Arabic), otherwise English. A small inline script in `index.html` applies the saved direction before the app loads, so Arabic visitors don't see a left-to-right flash.
-- **Locale formatting:** dates and numbers use `Intl` with `en-US` or `ar-SA` (Gregorian calendar, Arabic-Indic digits).
-- **Fonts:** IBM Plex Sans Arabic for Arabic and Inter for Latin, with system fallbacks (Noto Sans Arabic, Segoe UI, Tahoma, Geeza Pro).
-- **Contact form:** validation with translated messages, focus moved to the first invalid field, accessible error descriptions, a character counter, and toasts. Switching language keeps everything typed and re-translates visible errors and notifications.
-- **No fake backend:** the form opens the visitor's email app with a pre-filled message (`mailto:`). If no email is configured, it says so instead of pretending to send.
-- **Accessibility:** skip link, labelled landmarks, keyboard-operable language switcher and mobile menu (Escape closes it), visible focus styles, `prefers-reduced-motion` support.
-- **Unconfigured links** (live demo, source code, social profiles) are shown as "Link coming soon" / "Not configured yet" rather than dead links.
+![Switching between English and Arabic](docs/demo/language-switch.gif)
 
-## Motion and effects
+## Screenshots
 
-| Library | Used for |
+| English (LTR) | Arabic (RTL) |
 | --- | --- |
-| [GSAP](https://gsap.com) + ScrollTrigger | Hero entrance; section titles unmask and cards fade up on scroll; the experience timeline fills as you scroll; top scroll-progress bar; hero numbers count up |
-| [Lenis](https://lenis.darkroom.engineering) | Smooth scrolling, including in-page links. Driven by GSAP's ticker (`gsap.ticker.add`) and feeds `ScrollTrigger.update`, so both run in the same frame |
-| [React Bits](https://reactbits.dev) | `BlurText` (hero name), `LightRays` (hero), `ShinyText` (availability badge), `StarBorder` + `Magnet` (hero buttons), `SpotlightCard` (every card, via `ui/Card.tsx`), `LogoLoop` (skills marquee), `ClickSpark` (click sparks). Source copied into `src/components/reactbits/` |
-| [Motion](https://motion.dev) | Required by React Bits `BlurText` |
+| ![Hero in English](docs/screenshots/desktop-en-hero.png) | ![Hero in Arabic](docs/screenshots/desktop-ar-hero.png) |
+| ![Projects in English](docs/screenshots/desktop-en-projects.png) | ![Experience timeline in Arabic](docs/screenshots/desktop-ar-experience.png) |
 
-Design: dark theme with mint (`#2fc4a6`) and gold (`#e3b453`) accents; tokens are at the top of `src/styles/global.css`, and the redesign layer is at the end of that file.
+**Mobile**
 
-Code lives in `src/animation/` (`gsap.ts`, `useSmoothScroll.ts`, `useScrollReveal.ts`) and `src/components/ui/CountUp.tsx`.
+| Arabic | English | Menu and navigation (Arabic) |
+| --- | --- | --- |
+| <img src="docs/screenshots/mobile-ar-hero.png" width="260" alt="Mobile hero in Arabic"> | <img src="docs/screenshots/mobile-en-skills.png" width="260" alt="Mobile skills in English"> | <img src="docs/demo/mobile-ar.gif" width="260" alt="Mobile menu and scrolling in Arabic"> |
 
-**Reduced motion:** with `prefers-reduced-motion: reduce`, Lenis is not started, sections appear without animation, the light rays are not rendered, the CV glow stops moving, buttons don't follow the cursor, click sparks are off, the name shows as plain text and the numbers show their final value.
+**Scroll animations**
 
-React Bits components are under the MIT + Commons Clause license: free to use in this site, but the components themselves may not be resold or redistributed on their own.
+![Scrolling through the sections](docs/demo/scroll-tour.gif)
 
-## Getting started
+## What's inside
 
-Requirements: **Node.js 20.19+ or 22.12+** and npm.
+- **Sections:** Hero, About, Skills, Projects, Services, Experience, CV download, Contact.
+- **Real bilingual layer:** one set of components, two typed dictionaries (`en.ts`, `ar.ts`). A missing Arabic key fails the build.
+- **Proper RTL:** `<html lang dir>` switches with the language, layout uses CSS logical properties, arrows mirror, and Arabic visitors never see a left-to-right flash on load.
+- **Locale formatting:** dates and numbers use `Intl` (`ar-SA` shows Arabic-Indic digits).
+- **Contact form:** validation in both languages, errors re-translate on switch, typed text is kept. It opens the visitor's email app (`mailto:`); there is no fake backend.
+- **Motion:** GSAP ScrollTrigger reveals, Lenis smooth scrolling, React Bits effects (light rays, blur text, spotlight cards, logo loop, click sparks). All of it turns off with `prefers-reduced-motion`.
+- **Accessible:** skip link, keyboard menu (Escape closes), visible focus, labelled landmarks.
+
+## Run it
+
+Requires Node.js 20.19+ or 22.12+.
 
 ```bash
 npm install
-npm run dev          # http://localhost:5173
+npm run dev        # http://localhost:5173
 ```
 
 | Command | What it does |
 | --- | --- |
-| `npm run dev` | Start the dev server with hot reload |
 | `npm run build` | Type-check and build to `dist/` |
-| `npm run preview` | Serve the production build locally |
-| `npm run typecheck` | Type-check only |
 | `npm run lint` | Lint with oxlint |
-| `npm run test:e2e` | Build, serve and run the Playwright tests (desktop + mobile) |
+| `npm run test:e2e` | Playwright tests on desktop Chrome and a Pixel 7 (run `npx playwright install chromium` once) |
 
-First time running the tests: `npx playwright install chromium`.
+## Edit the content
 
-## Personalize
+| What | Where |
+| --- | --- |
+| Email, phone, social links, CV file, project links, experience dates | `src/config/profile.ts` |
+| All text, in both languages | `src/i18n/locales/en.ts` and `ar.ts` |
+| Colors and design tokens | top of `src/styles/global.css` |
 
-1. **Contact details and links:** `src/config/profile.ts`
-   - `email`, `phone`, `linkedinUrl`, `githubUrl` (leave `null` to show "Not configured yet")
-   - `cvUrl`: copy your CV to `public/cv.pdf` and set `cvUrl: './cv.pdf'` (leave `null` to show "CV coming soon")
-   - `projects[].demoUrl` / `repoUrl` for each of the four projects
-   - `experience[]`: dates, `group` (`work` or `education`) and `precision` (`year` when only the year is known)
-2. **Text in both languages:** `src/i18n/locales/en.ts` and `src/i18n/locales/ar.ts`
-   - `profile.name`, `profile.initials`, `profile.role`, `profile.location`, `meta.title`, `meta.description`
-   - `about.paragraphs`, `about.factValues.languages`
-   - `experience.items` (job titles, organizations, descriptions), keyed by the ids in `profile.ts`
-   - `skills.groups` lists only real skills. Add a skill to both files when you actually use it.
-   - Review the services list so it matches what you actually offer.
-3. **Static title for search engines:** update `<title>` and the description in `index.html`. The app replaces them at runtime, but crawlers and link previews read the static HTML.
-
-### Adding a translated string
-
-1. Add the key to `src/i18n/locales/en.ts`.
-2. Run `npm run typecheck`: it fails until the same key exists in `ar.ts`.
-3. Use it in a component: `const { t } = useLanguage()` then `t.section.key`. For values use `format(t.section.key, { count })`, `formatNumber` and `formatDate`.
+Add a new string to `en.ts` first; `npm run typecheck` then fails until `ar.ts` has it too.
 
 ## Project structure
 
 ```
 src/
-  i18n/
-    config.ts            # languages, direction, locale, default + storage logic
-    context.ts           # context type
-    LanguageProvider.tsx # state, <html lang/dir>, title, Intl helpers
-    useLanguage.ts       # hook used by components
-    interpolate.ts       # "{token}" replacement
-    locales/en.ts, ar.ts # dictionaries
-  config/profile.ts      # non-translated personal data, links, dates, form limits
+  i18n/          language context, dictionaries, Intl helpers
+  config/        profile data and links
   components/
-    layout/              # Header, LanguageSwitcher, Footer, nav items
-    sections/            # Hero, About, Skills, Projects, Services, Experience, Cv, Contact
-    ui/                  # Icon, Section, ExternalLink, toast system
-  hooks/useActiveSection.ts
-  utils/                 # contact validation, mailto builder
-  styles/global.css      # design tokens + logical-property layout
-tests/bilingual.spec.ts  # Playwright end-to-end tests
+    sections/    Hero, About, Skills, Projects, Services, Experience, Cv, Contact
+    layout/      Header, LanguageSwitcher, Footer
+    reactbits/   vendored React Bits effects
+    ui/          Card, Icon, CountUp, toasts
+  animation/     GSAP + Lenis setup and scroll reveals
+tests/           Playwright end-to-end tests
 ```
 
-## Publish to GitHub
+## Deploy
 
-1. Create an empty repository on GitHub (no README), e.g. `developer-portfolio`.
-2. From this folder:
+Hosted on **Vercel**: every push to `main` redeploys automatically, and pull requests get a preview URL. GitHub Actions (`.github/workflows/ci.yml`) runs lint and build on every push. The build is static with relative paths, so Netlify, Cloudflare Pages or GitHub Pages also work.
 
-```bash
-git init            # skip if the folder is already a git repository
-git add .
-git commit -m "Initial commit: bilingual developer portfolio"
-git branch -M main
-git remote add origin https://github.com/<your-username>/developer-portfolio.git
-git push -u origin main
-```
+## Credits
 
-`node_modules/`, `dist/`, test output and `.env` files are excluded by `.gitignore`. This project needs no API keys or secrets.
-
-## Deploy to Vercel
-
-The build is static (`dist/`). `vercel.json` tells Vercel to install with `npm ci`, build with `npm run build` and serve `dist/`.
-
-1. Push the project to GitHub as above.
-2. Sign in at [vercel.com](https://vercel.com) with your GitHub account.
-3. **Add New → Project**, pick the `developer-portfolio` repository, then **Deploy**.
-4. Every push to `main` deploys again automatically. Pull requests get their own preview URL.
-
-The site is live at https://developer-portfolio-two-omega.vercel.app (set in `projects[0].demoUrl`). Every push to `main` redeploys it automatically.
-
-`.github/workflows/ci.yml` runs lint, type-check and build on every push and pull request, so a broken change shows a red ✗ on GitHub before you rely on the Vercel deploy.
-
-Because asset paths are relative (`base: './'` in `vite.config.ts`), the same build also works on Netlify, Cloudflare Pages or GitHub Pages if you ever move.
-
-## Testing
-
-`tests/bilingual.spec.ts` runs in desktop Chrome and a Pixel 7 mobile viewport and checks:
-
-- English default, switching to Arabic and back, `<html lang dir>`, title and meta description
-- Language persists after reload and is applied before the app script loads
-- An Arabic browser locale defaults to Arabic
-- Keyboard operation and accessible name of the switcher
-- No untranslated English text in Arabic mode (only inherently Latin values such as tech names and the email example), and no Arabic in English mode except the switcher label
-- Locale formatting of dates and numbers
-- Form validation messages in both languages, re-translated on switch
-- Typed form values survive switching languages in both directions
-- An unconfigured contact email reports an error instead of faking a send; toasts re-translate and can be dismissed
-- The Skills section lists exactly the configured skills; the CV section reports a missing file instead of a dead link
-- No horizontal overflow in either language; header order flips with direction; mobile menu open, navigate and Escape; arrow icons mirror in RTL
-
-Not covered by automated tests: the `mailto:` hand-off to a real email app (it needs `profile.email` set and a mail client), and real Safari, Firefox or iOS devices. Check those manually before sharing the site.
-
-## License
-
-Add a license of your choice (for example MIT) before publishing if you want others to reuse the code.
+React Bits components are MIT + Commons Clause: free to use in this site, not to resell on their own.
